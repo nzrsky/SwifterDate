@@ -1,15 +1,16 @@
 <p align="center" >
-  <img src="banner.png" width=300px alt="SwiftDate" title="SwiftDate">
+  <img src="banner.png" width=300px alt="SwifterDate" title="SwifterDate">
 </p>
 
 <p align="center"><strong>Toolkit to parse, validate, manipulate, compare and display dates, time & timezones in Swift.</strong></p>
 
 ## What's This?
 
-SwiftDate is the **definitive toolchain to manipulate and display dates and time zones** on all Apple platform and even on Linux and Swift Server Side frameworks like Vapor or Kitura.  
-**Over 3 million of downloads on [CocoaPods](https://cocoapods.org/pods/SwiftDate).**
+**SwifterDate** is a modernized fork of **SwiftDate**, which is the **definitive toolchain to manipulate and display dates and time zones** on all Apple platform and even on Linux and Swift Server Side frameworks like Vapor or Kitura.  
 
-From simple date manipulation to complex business logic SwiftDate maybe the right choice for your next project.
+==
+
+From simple date manipulation to complex business logic SwifterDate maybe the right choice for your next project.
 
 - [x] **Easy Date Parsing** (custom formats, iso8601, rss & many more)
 - [x] **Easy Date Formatting** even with colloquial formatter and 140+ supported languages
@@ -30,17 +31,16 @@ and of course...
 - **WE LOVE PLAYGROUND!** [Check out](/Playgrounds/SwiftDate.playground) our interactive playground!
 
 
-## Start with SwiftDate
+## Start with SwifterDate
 
 The entire library is fully documented both via XCode method inspector and a complete markdown documentation you can found below.
 
 - → **[Full Documentation](/Documentation/Index.md)**
 - → **[Requirements, Install, License & More](/Documentation/0.Informations.md)**
-- → **[Upgrading from SwiftDate 4](/Documentation/10.Upgrading_SwiftDate4.md)**
 
-### Explore SwiftDate
+### Explore SwifterDate
 
-From simple date manipulation to complex business logic SwiftDate maybe the right choice for your next project.
+From simple date manipulation to complex business logic SwifterDate maybe the right choice for your next project.
 
 Let me show to you the main features of the library:
 
@@ -59,7 +59,7 @@ Let me show to you the main features of the library:
 <a name="1"/>
 
 ### 1. Date Parsing
-SwiftDate can recognize all the major datetime formats  automatically (ISO8601, RSS, Alt RSS, .NET, SQL, HTTP...) and you can also provide your own formats.
+SwifterDate can recognize all the major datetime formats  automatically (ISO8601, RSS, Alt RSS, .NET, SQL, HTTP...) and you can also provide your own formats.
 Creating a new date has never been so easy!
 
 ```swift
@@ -93,7 +93,7 @@ let over1Year = (date3 - date2).year > 1
 <a name="3"/>
 
 ### 3. Date Comparison
-SwiftDate include an extensive set of comparison functions; you can compare two dates by granularity, check if a date is an particular day, range and practically any other comparison you ever need.
+SwifterDate include an extensive set of comparison functions; you can compare two dates by granularity, check if a date is an particular day, range and practically any other comparison you ever need.
 
 Comparison is also available via standard math operators like (`>, >=, <, <=`).
 
@@ -130,7 +130,7 @@ let _ = DateInRegion.sortedByNewest(list: datesArray)
 <a name="4"/>
 
 ### 4. Date Creation with Region (Timezone, Calendar & Locale)
-You can create new dates from a string, time intervals or using date components. SwiftDate offers a wide set of functions to create and derivate your dates even with random generation!
+You can create new dates from a string, time intervals or using date components. SwifterDate offers a wide set of functions to create and derivate your dates even with random generation!
 
 ```swift
 // All dates includes timezone, calendar and locales!
@@ -160,7 +160,7 @@ let _ = DateInRegion.randomDates(count: 50, between: lowerLimitDate, and: upperL
 <a name="5"/>
 
 ### 5. Derivated Dates
-Date can be also generated starting from other dates; SwiftDate includes an extensive set of functions to generate.
+Date can be also generated starting from other dates; SwifterDate includes an extensive set of functions to generate.
 Over 20 different derivated dates can be created easily using `dateAt()` function.
 
 ```swift
@@ -279,7 +279,7 @@ let _ = interval.toString {
 <a name="9"/>
 
 ### 9. Relative Date Formatting (fully customizable!)
-Relative formatting is all new in SwiftDate; it supports 120+ languages with two different styles (`.default, .twitter`), 9 flavours (`.long, .longTime, .longConvenient, .short, .shortTime, .shortConvenient, .narrow, .tiny, .quantify`) and all of them are customizable as you need.
+Relative formatting is all new in SwifterDate; it supports 120+ languages with two different styles (`.default, .twitter`), 9 flavours (`.long, .longTime, .longConvenient, .short, .shortTime, .shortConvenient, .narrow, .tiny, .quantify`) and all of them are customizable as you need.
 The extensible format allows you to provide your own translations and rules to override the default behaviour.
 
 ```swift
@@ -311,6 +311,6 @@ let decodedDate = try JSONDecoder().decode(DateInRegion.self, from: encodedDate)
 <a name="11"/>
 
 ### 11. Time Periods
-SwiftDate integrates the great Matthew York's [DateTools](https://github.com/MatthewYork/DateTools) module in order to support Time Periods.
+SwifterDate integrates the great Matthew York's [DateTools](https://github.com/MatthewYork/DateTools) module in order to support Time Periods.
 
 See [Time Periods](/Documentation/12.Timer_Periods.md) section of the documentation.
