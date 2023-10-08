@@ -179,7 +179,7 @@ extension Date {
             return dateComponents.yearForWeekOfYear
         case .nanosecond:
             return dateComponents.nanosecond
-        case .calendar, .timeZone:
+        case .calendar, .timeZone, .isLeapMonth:
             return nil
         @unknown default:
             assert(false, "unknown date component")

@@ -87,7 +87,7 @@ extension Calendar.Identifier: CustomStringConvertible {
 		case Calendar.Identifier.islamicTabular.description:		self = .islamicTabular
 		case Calendar.Identifier.islamicUmmAlQura.description:		self = .islamicUmmAlQura
 		default:
-			let defaultCalendar = SwiftDate.defaultRegion.calendar.identifier
+			let defaultCalendar = SwifterDate.defaultRegion.calendar.identifier
 			debugPrint("Calendar Identifier '\(rawValue)' not recognized. Using default (\(defaultCalendar))")
 			self = defaultCalendar
 		}

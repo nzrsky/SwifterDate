@@ -227,7 +227,7 @@ public extension Calendar.Component {
 		case .nanosecond: return NSCalendar.Unit.nanosecond
 		case .calendar: return NSCalendar.Unit.calendar
 		case .timeZone: return NSCalendar.Unit.timeZone
-		@unknown default:
+        @unknown default:
 			fatalError("Unsupported type \(self)")
 		}
 	}

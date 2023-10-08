@@ -48,7 +48,7 @@ public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStrin
 	/// - Parameters:
 	///   - date: absolute date to represent.
 	///   - region: region in which the date is represented. If ignored `defaultRegion` is used instead.
-	public init(_ date: Date = Date(), region: Region = SwiftDate.defaultRegion) {
+	public init(_ date: Date = Date(), region: Region = SwifterDate.defaultRegion) {
 		self.date = date
 		self.region = region
 	}
@@ -62,7 +62,7 @@ public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStrin
 	///   - string: string with the date.
 	///   - format: format of the date.
 	///   - region: region in which the date is expressed.
-	public init?(_ string: String, format: String? = nil, region: Region = SwiftDate.defaultRegion) {
+	public init?(_ string: String, format: String? = nil, region: Region = SwifterDate.defaultRegion) {
 		guard let date = DateFormats.parse(string: string,
 										   format: format,
 										   region: region) else {
@@ -81,9 +81,9 @@ public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStrin
 	///   - string: string with the date.
 	///   - formats: ordered list of formats to use.
 	///   - region: region in which the date is expressed.
-	public init?(_ string: String, formats: [String]?, region: Region = SwiftDate.defaultRegion) {
+	public init?(_ string: String, formats: [String]?, region: Region = SwifterDate.defaultRegion) {
 		guard let date = DateFormats.parse(string: string,
-										   formats: (formats ?? SwiftDate.autoFormats),
+										   formats: (formats ?? SwifterDate.autoFormats),
 										   region: region) else {
 			return nil // failed to parse date
 		}
@@ -119,7 +119,7 @@ public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStrin
 	///   - configuration: configuration callback
 	///   - region: region in which the date is expressed.
 	///				Ignore to use `SwiftDate.defaultRegion`, `nil` to use `DateComponents` data.
-	public init?(components configuration: ((inout DateComponents) -> Void), region: Region? = SwiftDate.defaultRegion) {
+	public init?(components configuration: ((inout DateComponents) -> Void), region: Region? = SwifterDate.defaultRegion) {
 		var components = DateComponents()
 		configuration(&components)
 		let r = (region ?? Region(fromDateComponents: components))
@@ -146,7 +146,7 @@ public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStrin
 	}
 
 	/// Initialize a new date with given components.
-	public init(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0, nanosecond: Int = 0, region: Region = SwiftDate.defaultRegion) {
+	public init(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0, nanosecond: Int = 0, region: Region = SwifterDate.defaultRegion) {
 		var components = DateComponents()
 		components.year = year
 		components.month = month
@@ -165,14 +165,14 @@ public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStrin
 	///
 	/// - Returns: Date instance.
 	public static func past() -> DateInRegion {
-        DateInRegion(Date.distantPast, region: SwiftDate.defaultRegion)
+        DateInRegion(Date.distantPast, region: SwifterDate.defaultRegion)
 	}
 
 	/// Return a date in the distant future.
 	///
 	/// - Returns: Date instance.
 	public static func future() -> DateInRegion {
-        DateInRegion(Date.distantFuture, region: SwiftDate.defaultRegion)
+        DateInRegion(Date.distantFuture, region: SwifterDate.defaultRegion)
 	}
 
 	// MARK: - Codable Support

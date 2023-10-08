@@ -25,7 +25,7 @@ public extension DateInRegion {
 	///   - region: region of the dates.
 	/// - Returns: array of dates
 	static func randomDates(count: Int, between initial: DateInRegion, and final: DateInRegion,
-								   region: Region = SwiftDate.defaultRegion) -> [DateInRegion] {
+								   region: Region = SwifterDate.defaultRegion) -> [DateInRegion] {
 		var list: [DateInRegion] = []
 		for _ in 0..<count {
 			list.append(DateInRegion.randomDate(between: initial, and: final, region: region))
@@ -40,7 +40,7 @@ public extension DateInRegion {
 	///   - region: destination region, `nil` to use the default region
 	/// - Returns: random date
 	static func randomDate(withinDaysBeforeToday days: Int,
-								  region: Region = SwiftDate.defaultRegion) -> DateInRegion {
+								  region: Region = SwifterDate.defaultRegion) -> DateInRegion {
 		let today = DateInRegion(region: region)
 		let earliest = DateInRegion(today.date.addingTimeInterval(TimeInterval(-days * 24 * 60 * 60)), region: region)
 		return DateInRegion.randomDate(between: earliest, and: today)
@@ -50,7 +50,7 @@ public extension DateInRegion {
 	///
 	/// - Parameter region: destination region, `nil` to use the default region
 	/// - Returns: random date
-	static func randomDate(region: Region = SwiftDate.defaultRegion) -> DateInRegion {
+	static func randomDate(region: Region = SwifterDate.defaultRegion) -> DateInRegion {
 		let randomTime = TimeInterval(UInt32.random(in: UInt32.min..<UInt32.max))
 		let absoluteDate = Date(timeIntervalSince1970: randomTime)
 		return DateInRegion(absoluteDate, region: region)
@@ -64,7 +64,7 @@ public extension DateInRegion {
 	///   - region: destination region, `nil` to use the default region
 	/// - Returns: random Date
 	static func randomDate(between initial: DateInRegion, and final: DateInRegion,
-								  region: Region = SwiftDate.defaultRegion) -> DateInRegion {
+								  region: Region = SwifterDate.defaultRegion) -> DateInRegion {
 		let interval = final.timeIntervalSince(initial)
 		let randomInterval = TimeInterval(UInt32.random(in: UInt32.min..<UInt32(interval)))
 		return initial.addingTimeInterval(randomInterval)
@@ -475,7 +475,7 @@ public extension DateInRegion {
 	///   - region: region target, omit to use `SwiftDate.defaultRegion`
 	/// - Returns: Ordered list of the dates for given weekday into given month.
 	static func datesForWeekday(_ weekday: WeekDay, inMonth month: Int, ofYear year: Int,
-									   region: Region = SwiftDate.defaultRegion) -> [DateInRegion] {
+									   region: Region = SwifterDate.defaultRegion) -> [DateInRegion] {
 		let fromDate = DateInRegion(year: year, month: month, day: 1, hour: 0, minute: 0, second: 0, nanosecond: 0, region: region)
 		let toDate = fromDate.dateAt(.endOfMonth)
 		return DateInRegion.datesForWeekday(weekday, from: fromDate, to: toDate, region: region)
@@ -491,7 +491,7 @@ public extension DateInRegion {
 	///   - region: region target, omit to use `SwiftDate.defaultRegion`
 	/// - Returns: Ordered list of the dates for given weekday in passed range.
 	static func datesForWeekday(_ weekday: WeekDay, from startDate: DateInRegion, to endDate: DateInRegion,
-									   region: Region = SwiftDate.defaultRegion) -> [DateInRegion] {
+									   region: Region = SwifterDate.defaultRegion) -> [DateInRegion] {
 
 		let calendarObj = region.calendar
 		let startDateWeekDay = Int(calendarObj.component(.weekday, from: startDate.date))

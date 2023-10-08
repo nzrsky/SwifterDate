@@ -1,5 +1,5 @@
 import Foundation
-import SwiftDate
+import SwifterDate
 /*:
 ## 5.0 - Format Custom Style
 If you need to format a `Date` or `DateInRegion` in a String using a custom format you need to use `toFormat(_:locale:)` function.

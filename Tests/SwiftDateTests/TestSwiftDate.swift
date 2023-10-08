@@ -10,23 +10,23 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestSwiftDate: XCTestCase {
 
 	func testAutoFormats() {
-		let builtInAutoFormats = SwiftDate.autoFormats
-		XCTAssert((SwiftDate.autoFormats.isEmpty == false), "No auto formats available")
+		let builtInAutoFormats = SwifterDate.autoFormats
+		XCTAssert((SwifterDate.autoFormats.isEmpty == false), "No auto formats available")
 		let newFormats = [DateFormats.altRSS, DateFormats.extended, DateFormats.httpHeader]
-		SwiftDate.autoFormats = newFormats
-		XCTAssert( (SwiftDate.autoFormats == newFormats), "Failed to set new auto formats")
-		SwiftDate.resetAutoFormats()
-		XCTAssert( (SwiftDate.autoFormats == builtInAutoFormats), "Failed to reset auto formats")
+		SwifterDate.autoFormats = newFormats
+		XCTAssert( (SwifterDate.autoFormats == newFormats), "Failed to set new auto formats")
+		SwifterDate.resetAutoFormats()
+		XCTAssert( (SwifterDate.autoFormats == builtInAutoFormats), "Failed to reset auto formats")
 	}
 
     func testUTCZone() {
-        SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.asiaShanghai, locale: Locales.current)
+        SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.asiaShanghai, locale: Locales.current)
         
         // DO NOT recognized the right timezone
         // The timezone should be UTC

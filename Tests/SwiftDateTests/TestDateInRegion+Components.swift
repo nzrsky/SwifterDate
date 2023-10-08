@@ -10,7 +10,7 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestDateInRegion_Components: XCTestCase {
@@ -266,7 +266,7 @@ class TestDateInRegion_Components: XCTestCase {
 	}
     
     func testComparingTimeUnitsWithDateComponents() {
-        SwiftDate.defaultRegion = .local
+        SwifterDate.defaultRegion = .local
 
         let now = Date()
         XCTAssert((now.addingTimeInterval(3600) - now).in(.hour) == 1, "Failed to compare date")

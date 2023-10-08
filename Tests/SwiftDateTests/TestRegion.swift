@@ -10,7 +10,7 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestRegion: XCTestCase {
@@ -23,7 +23,7 @@ class TestRegion: XCTestCase {
 
 	func testRegionInit() {
 
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.gmt, locale: Locales.english)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.gmt, locale: Locales.english)
 
 		// UTC Region
 		XCTAssert( (Region.UTC.timeZone.identifier == Zones.gmt.toTimezone().identifier), "Failed to create UTC region")
@@ -49,17 +49,17 @@ class TestRegion: XCTestCase {
 
 		// Default region in another locale and calendar, no action
 		let unmodifiedDefaultRegion = Region.currentIn()
-		XCTAssert( (unmodifiedDefaultRegion == SwiftDate.defaultRegion), "currentIn() with no parameters should return unmodified default region")
+		XCTAssert( (unmodifiedDefaultRegion == SwifterDate.defaultRegion), "currentIn() with no parameters should return unmodified default region")
 
 		// Default region in another locale and calendar, only calendar
 		let modifiedCalendarDefaultRegion = Region.currentIn(calendar: Calendars.buddhist)
 		XCTAssert( (modifiedCalendarDefaultRegion.calendar.identifier == Calendar.Identifier.buddhist), "currentIn() with modified calendar only does not work")
-		XCTAssert( (modifiedCalendarDefaultRegion.locale == SwiftDate.defaultRegion.locale), "currentIn() with modified calendar also modify the locale")
+		XCTAssert( (modifiedCalendarDefaultRegion.locale == SwifterDate.defaultRegion.locale), "currentIn() with modified calendar also modify the locale")
 
 		// Default region in another locale and calendar, only locale
 		let modifiedLocaleDefaultRegion = Region.currentIn(locale: Locales.italian)
 		XCTAssert( (modifiedLocaleDefaultRegion.locale.identifier == Locale(identifier: "it").identifier), "currentIn() with modified locale only does not work")
-		XCTAssert( (modifiedLocaleDefaultRegion.calendar.identifier == SwiftDate.defaultRegion.calendar.identifier), "currentIn() with modified locale also modify the calendar")
+		XCTAssert( (modifiedLocaleDefaultRegion.calendar.identifier == SwifterDate.defaultRegion.calendar.identifier), "currentIn() with modified locale also modify the calendar")
 
 		// Init from DateComponents
 		var dComps = DateComponents()
@@ -114,13 +114,13 @@ class TestRegion: XCTestCase {
 
 		// Init with default region data
 		let regionWithDefault = Region()
-		XCTAssert( (regionWithDefault == SwiftDate.defaultRegion), "Failed to create new Region from default region")
+		XCTAssert( (regionWithDefault == SwifterDate.defaultRegion), "Failed to create new Region from default region")
 
 		// Init with only fixed calendar
 		let defaultRegion_fixedCal = Region(calendar: Calendars.buddhist)
 		XCTAssert( (defaultRegion_fixedCal.calendar.identifier == Calendar.Identifier.buddhist), "Failed to new region from default with fixed only calendar / different calendar")
-		XCTAssert( (defaultRegion_fixedCal.locale.identifier == SwiftDate.defaultRegion.locale.identifier), "Failed to new region from default with fixed only calendar / different locale")
-		XCTAssert( (defaultRegion_fixedCal.timeZone.identifier == SwiftDate.defaultRegion.timeZone.identifier), "Failed to new region from default with fixed only calendar / different timezone")
+		XCTAssert( (defaultRegion_fixedCal.locale.identifier == SwifterDate.defaultRegion.locale.identifier), "Failed to new region from default with fixed only calendar / different locale")
+		XCTAssert( (defaultRegion_fixedCal.timeZone.identifier == SwifterDate.defaultRegion.timeZone.identifier), "Failed to new region from default with fixed only calendar / different timezone")
 
 	}
 

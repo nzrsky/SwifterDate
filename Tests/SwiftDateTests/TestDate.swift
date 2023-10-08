@@ -6,7 +6,7 @@
 //  Copyright © 2019 SwiftDate. All rights reserved.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestDate: XCTestCase {

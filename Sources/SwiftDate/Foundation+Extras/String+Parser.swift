@@ -86,7 +86,7 @@ public protocol DateParsable {
 
 extension String: DateParsable {
 
-	public func toDate(_ format: String? = nil, region: Region = SwiftDate.defaultRegion) -> DateInRegion? {
+	public func toDate(_ format: String? = nil, region: Region = SwifterDate.defaultRegion) -> DateInRegion? {
         DateInRegion(self, format: format, region: region)
 	}
 
@@ -94,7 +94,7 @@ extension String: DateParsable {
         DateInRegion(self, formats: formats, region: region)
 	}
 
-	public func toDate(style: StringToDateStyles, region: Region = SwiftDate.defaultRegion) -> DateInRegion? {
+	public func toDate(style: StringToDateStyles, region: Region = SwifterDate.defaultRegion) -> DateInRegion? {
         style.toDate(self, region: region)
 	}
 

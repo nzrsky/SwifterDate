@@ -23,7 +23,7 @@ extension Date: DateRepresentable {
 
 	/// For absolute Date object the default region is obtained from the global `defaultRegion` variable.
 	public var region: Region {
-        SwiftDate.defaultRegion
+        SwifterDate.defaultRegion
 	}
 
 	/// Assign a custom formatter if you need a special behaviour during formatting of the object.
@@ -51,7 +51,7 @@ extension Date: DateRepresentable {
 	///   - format: format of the date (`nil` uses provided list of auto formats patterns.
 	///				Pass it if you can in order to optimize the parse task).
 	///   - region: region in which the date is expressed. `nil` uses the `SwiftDate.defaultRegion`.
-	public init?(_ string: String, format: String? = nil, region: Region = SwiftDate.defaultRegion) {
+	public init?(_ string: String, format: String? = nil, region: Region = SwifterDate.defaultRegion) {
 		guard let dateInRegion = DateInRegion(string, format: format, region: region) else { return nil }
 		self = dateInRegion.date
 	}
@@ -85,7 +85,7 @@ extension Date: DateRepresentable {
 	/// - Parameters:
 	///   - configuration: configuration callback
 	///   - region: region in which the date is expressed. Ignore to use `SwiftDate.defaultRegion`, `nil` to use `DateComponents` data.
-	public init?(components configuration: ((inout DateComponents) -> Void), region: Region? = SwiftDate.defaultRegion) {
+	public init?(components configuration: ((inout DateComponents) -> Void), region: Region? = SwifterDate.defaultRegion) {
 		guard let date = DateInRegion(components: configuration, region: region)?.date else { return nil }
 		self = date
 	}
@@ -102,7 +102,7 @@ extension Date: DateRepresentable {
 	}
 
 	/// Initialize a new date with given components.
-	public init(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int = 0, nanosecond: Int = 0, region: Region = SwiftDate.defaultRegion) {
+	public init(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int = 0, nanosecond: Int = 0, region: Region = SwifterDate.defaultRegion) {
 		var components = DateComponents()
 		components.year = year
 		components.month = month
@@ -120,7 +120,7 @@ extension Date: DateRepresentable {
 	///
 	/// - Returns: `DateInRegion`
 	public func inDefaultRegion() -> DateInRegion {
-        DateInRegion(self, region: SwiftDate.defaultRegion)
+        DateInRegion(self, region: SwifterDate.defaultRegion)
 	}
 
 	/// Express given absolute date in the context of passed region.

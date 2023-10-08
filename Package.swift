@@ -1,27 +1,28 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
-    name: "SwiftDate",
-    defaultLocalization: "it",
+    name: "SwifterDate",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v10_15), .iOS(.v13), .watchOS(.v6), .tvOS(.v13)
     ],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(name: "SwiftDate", targets: ["SwiftDate"])
+        .library(name: "SwifterDate", targets: ["SwifterDate"])
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "SwiftDate",
+            name: "SwifterDate",
             dependencies: [],
-			resources: [
-				.copy("Formatters/RelativeFormatter/langs"),
-                .process("Resources")
-			]),
+            path: "Sources/SwiftDate",
+			resources: []
+        ),
+
         .testTarget(
-            name: "SwiftDateTests",
-            dependencies: ["SwiftDate"])
+            name: "SwifterDateTests",
+            dependencies: ["SwifterDate"],
+            path: "Tests/SwiftDateTests"
+        )
     ]
 )

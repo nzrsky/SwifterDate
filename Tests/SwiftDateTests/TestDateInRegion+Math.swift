@@ -10,7 +10,7 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestDateInRegion_Math: XCTestCase {

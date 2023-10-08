@@ -44,9 +44,9 @@ public struct Region: Decodable, Encodable, Equatable, Hashable, CustomStringCon
 	///   - calendar: calendar for region, if not specified `defaultRegions`'s calendar is used instead.
 	///   - timezone: timezone for region, if not specified `defaultRegions`'s timezone is used instead.
 	///   - locale: locale for region, if not specified `defaultRegions`'s locale is used instead.
-	public init(calendar: CalendarConvertible = SwiftDate.defaultRegion.calendar,
-				zone: ZoneConvertible = SwiftDate.defaultRegion.timeZone,
-				locale: LocaleConvertible = SwiftDate.defaultRegion.locale) {
+	public init(calendar: CalendarConvertible = SwifterDate.defaultRegion.calendar,
+				zone: ZoneConvertible = SwifterDate.defaultRegion.timeZone,
+				locale: LocaleConvertible = SwifterDate.defaultRegion.locale) {
 		self.calendar = Calendar.newCalendar(calendar, configure: {
 			$0.timeZone = zone.toTimezone()
 			$0.locale = locale.toLocale()
@@ -103,9 +103,9 @@ public struct Region: Decodable, Encodable, Equatable, Hashable, CustomStringCon
 	///   - calendar: calendar to set
 	/// - Returns: region
 	public static func currentIn(locale: LocaleConvertible? = nil, calendar: CalendarConvertible? = nil) -> Region {
-		return Region(calendar: (calendar ?? SwiftDate.defaultRegion.calendar),
-					  zone: SwiftDate.defaultRegion.timeZone,
-					  locale: (locale ?? SwiftDate.defaultRegion.locale))
+		return Region(calendar: (calendar ?? SwifterDate.defaultRegion.calendar),
+					  zone: SwifterDate.defaultRegion.timeZone,
+					  locale: (locale ?? SwifterDate.defaultRegion.locale))
 	}
 
 	/// Return the current date expressed into the receiver region.
@@ -133,7 +133,7 @@ public struct Region: Decodable, Encodable, Equatable, Hashable, CustomStringCon
 	public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		let calId = Calendar.Identifier( try values.decode(String.self, forKey: .calendar))
-		let tz = (TimeZone(identifier: try values.decode(String.self, forKey: .timezone)) ?? SwiftDate.defaultRegion.timeZone)
+		let tz = (TimeZone(identifier: try values.decode(String.self, forKey: .timezone)) ?? SwifterDate.defaultRegion.timeZone)
 		let lc = Locale(identifier: try values.decode(String.self, forKey: .locale))
 		calendar = Calendar.newCalendar(calId, configure: {
 			$0.timeZone = tz

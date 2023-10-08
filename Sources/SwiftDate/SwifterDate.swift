@@ -12,7 +12,7 @@
 
 import Foundation
 
-public struct SwiftDate {
+public struct SwifterDate {
 
 	private init() { }
 

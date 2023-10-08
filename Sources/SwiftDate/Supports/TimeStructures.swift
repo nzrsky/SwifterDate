@@ -23,8 +23,8 @@ public enum WeekDay: Int {
 	///
 	/// - Parameter locale: locale of the output, omit to use the `defaultRegion`'s locale.
 	/// - Returns: display name
-	public func name(style: SymbolFormatStyle = .`default`, locale: LocaleConvertible = SwiftDate.defaultRegion.locale) -> String {
-		let region = Region(calendar: SwiftDate.defaultRegion.calendar, zone: SwiftDate.defaultRegion.timeZone, locale: locale)
+	public func name(style: SymbolFormatStyle = .`default`, locale: LocaleConvertible = SwifterDate.defaultRegion.locale) -> String {
+		let region = Region(calendar: SwifterDate.defaultRegion.calendar, zone: SwifterDate.defaultRegion.timeZone, locale: locale)
 		let formatter = DateFormatter.sharedFormatter(forRegion: region, format: nil)
 
 		let idx = (self.rawValue - 1)
@@ -69,7 +69,7 @@ public struct Year: CustomStringConvertible, Equatable {
 	/// Constructs a `Year` from the passed value.
 	///
 	/// - Parameter year: year value. Can be negative.
-	public init(_ year: Int) {
+    public init(_ year: Int) {
 		self.year = year
 	}
 
@@ -87,6 +87,9 @@ public struct Year: CustomStringConvertible, Equatable {
 		return self.isLeap() ? 366 : 365
 	}
 
+    public static var current: Self {
+        .init(Date().year)
+    }
 }
 
 // MARK: - Month
@@ -104,8 +107,8 @@ public enum Month: Int, CustomStringConvertible, Equatable {
 	///
 	/// - Parameter locale: locale of the output, omit to use the `defaultRegion`'s locale.
 	/// - Returns: display name
-	public func name(style: SymbolFormatStyle = .`default`, locale: LocaleConvertible = SwiftDate.defaultRegion.locale) -> String {
-		let region = Region(calendar: SwiftDate.defaultRegion.calendar, zone: SwiftDate.defaultRegion.timeZone, locale: locale)
+	public func name(style: SymbolFormatStyle = .`default`, locale: LocaleConvertible = SwifterDate.defaultRegion.locale) -> String {
+		let region = Region(calendar: SwifterDate.defaultRegion.calendar, zone: SwifterDate.defaultRegion.timeZone, locale: locale)
 		let formatter = DateFormatter.sharedFormatter(forRegion: region, format: nil)
 		switch style {
 		case .default:				return formatter.monthSymbols[self.rawValue]
@@ -149,4 +152,39 @@ public enum Month: Int, CustomStringConvertible, Equatable {
 		}
 	}
 
+}
+
+// MARK: - Week
+
+/// Defines a week
+public enum Week {
+    public static var numberOfDays: Int { 7 }
+}
+
+// MARK: - Day
+
+/// Defines a day - date without time
+public struct Day: Hashable, CustomStringConvertible, CustomDebugStringConvertible {
+    public let value: DateInRegion
+
+    public var description: String {
+        value.toString(.date(.short))
+    }
+
+    public var debugDescription: String {
+        value.description
+    }
+
+    /// Constructs a `Day` from the passed value.
+    ///
+    /// - Parameter date: date value
+    public init(_ date: Date, timezone: TimeZone = .autoupdatingCurrent) {
+        self.init(date.in(region: .init(zone: timezone)))
+    }
+
+    public init(_ dateInRegion: DateInRegion) {
+        self.value = dateInRegion.dateAtStartOf(.day)
+    }
+
+    public static var today: Self { .init(Date()) }
 }

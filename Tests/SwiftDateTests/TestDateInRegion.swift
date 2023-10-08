@@ -10,7 +10,7 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestDateInRegion: XCTestCase {
@@ -33,7 +33,7 @@ class TestDateInRegion: XCTestCase {
 	}
 
 	func testDateInRegion_InitWithDateAndRegion() {
-		SwiftDate.defaultRegion = testRegion
+		SwifterDate.defaultRegion = testRegion
 
 		// test with given date in test region
 		let dateInTestRegion = DateInRegion(testDate, region: testRegion)
@@ -48,12 +48,12 @@ class TestDateInRegion: XCTestCase {
 		// test with current date in default region
 		let nowInDefRegion = DateInRegion()
 		XCTAssertInTimeIntervalRange(value: (Date().timeIntervalSince1970 - nowInDefRegion.date.timeIntervalSince1970), range: 5, "Failed to create DateInRegion with now date and default region / date is not now")
-		XCTAssert( (nowInDefRegion.region == SwiftDate.defaultRegion), "Failed to create DateInRegion with now date and default region / different region")
+		XCTAssert( (nowInDefRegion.region == SwifterDate.defaultRegion), "Failed to create DateInRegion with now date and default region / different region")
 
 	}
 
 	func testDateInRegion_InitFromTimeInterval() {
-		SwiftDate.defaultRegion = Region(calendar: Calendars.buddhist, zone: Zones.indianCocos, locale: Locales.nepaliIndia)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.buddhist, zone: Zones.indianCocos, locale: Locales.nepaliIndia)
 
 		// Init with seconds and default region at UTC timezone
 		let secsFromEpoch = DateInRegion(seconds: 10)
@@ -122,11 +122,11 @@ class TestDateInRegion: XCTestCase {
 		XCTAssert(validDateLondon, "Failed to create a valid DateInRegion from paramters. One or more date components differs from original params")
 
 		// Init with fixed parameters (and some other missings) in default region
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.americaNewYork, locale: Locales.englishUnitedStates)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.americaNewYork, locale: Locales.englishUnitedStates)
 		let aDayInNY = DateInRegion(year: 1995, month: 1, day: 5)
 		let validDateNY = (aDayInNY.year == 1995 && aDayInNY.month == 1 && aDayInNY.day == 5 && aDayInNY.hour == 0 && aDayInNY.minute == 0 && aDayInNY.second == 0)
 		XCTAssert(validDateNY, "Failed to create a valid DateInRegion from paramters and default region. One or more date components differs from original params")
-		XCTAssert( (aDayInNY.region == SwiftDate.defaultRegion), "Failed to create a valid DateInRegion from paramters and default region.")
+		XCTAssert( (aDayInNY.region == SwifterDate.defaultRegion), "Failed to create a valid DateInRegion from paramters and default region.")
 
 	}
 
@@ -187,7 +187,7 @@ class TestDateInRegion: XCTestCase {
 
 		// From components in default region
 		let regionNY = Region(calendar: Calendars.gregorian, zone: Zones.americaNewYork, locale: Locales.english)
-		SwiftDate.defaultRegion = regionNY
+		SwifterDate.defaultRegion = regionNY
 
 		guard let dateInNY = DateInRegion(components: {
 			$0.year = 2001
@@ -226,7 +226,7 @@ class TestDateInRegion: XCTestCase {
 		XCTAssert((componentsOfDate.second! == 30), "Failed to extract local timezone date components from date / invalid second")
 
 		// Validate in UTC
-		SwiftDate.defaultRegion = Region.UTC
+		SwifterDate.defaultRegion = Region.UTC
 		let componentsInUTC = dateInParis.date.dateComponents // components are expressed in default zone! UTC
 		XCTAssert((componentsInUTC.year! == 2005), "Failed to extract local timezone date components from date / invalid year")
 		XCTAssert((componentsInUTC.month! == 12), "Failed to extract local timezone date components from date / invalid month")

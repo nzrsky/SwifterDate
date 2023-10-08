@@ -10,7 +10,7 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 public func randomNumber<T: SignedInteger>(inRange range: ClosedRange<T> = 1...6) -> T {

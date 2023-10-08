@@ -1,5 +1,5 @@
 import Foundation
-import SwiftDate
+import SwifterDate
 
 /*:
 Parsing dates is pretty straighforward in SwiftDate; library can parse strings with dates automatically by recognizing one of the most common patterns. Moreover you can provide your own formats or use one of the built-in parsers.

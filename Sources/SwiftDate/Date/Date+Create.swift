@@ -125,7 +125,7 @@ public extension Date {
 	/// - Parameter components: components to alter with their new values.
 	/// - Returns: new altered `DateInRegion` instance
 	func dateBySet(_ components: [Calendar.Component: Int]) -> Date? {
-        DateInRegion(self, region: SwiftDate.defaultRegion).dateBySet(components)?.date
+        DateInRegion(self, region: SwifterDate.defaultRegion).dateBySet(components)?.date
 	}
 
 	/// Create a new date by altering specified time components.
@@ -138,7 +138,7 @@ public extension Date {
 	///   - options: options for calculation
 	/// - Returns: new altered `DateInRegion` instance
 	func dateBySet(hour: Int?, min: Int?, secs: Int?, ms: Int? = nil, options: TimeCalculationOptions = TimeCalculationOptions()) -> Date? {
-		let srcDate = DateInRegion(self, region: SwiftDate.defaultRegion)
+		let srcDate = DateInRegion(self, region: SwifterDate.defaultRegion)
 		return srcDate.dateBySet(hour: hour, min: min, secs: secs, ms: ms, options: options)?.date
 	}
 
@@ -147,7 +147,7 @@ public extension Date {
 	/// - Parameter components: components to truncate.
 	/// - Returns: new date with truncated components.
 	func dateTruncated(_ components: [Calendar.Component]) -> Date? {
-        DateInRegion(self, region: SwiftDate.defaultRegion).dateTruncated(at: components)?.date
+        DateInRegion(self, region: SwifterDate.defaultRegion).dateTruncated(at: components)?.date
 	}
 
 	/// Creates a new instance by truncating the components starting from given components down the granurality.
@@ -155,7 +155,7 @@ public extension Date {
 	/// - Parameter component: The component to be truncated from.
 	/// - Returns: new date with truncated components.
 	func dateTruncated(from component: Calendar.Component) -> Date? {
-        DateInRegion(self, region: SwiftDate.defaultRegion).dateTruncated(from: component)?.date
+        DateInRegion(self, region: SwifterDate.defaultRegion).dateTruncated(from: component)?.date
 	}
 
 	/// Offset a date by n calendar components.
@@ -166,7 +166,7 @@ public extension Date {
 	///   - component: component to offset.
 	/// - Returns: new altered date.
 	func dateByAdding(_ count: Int, _ component: Calendar.Component) -> DateInRegion {
-        DateInRegion(self, region: SwiftDate.defaultRegion).dateByAdding(count, component)
+        DateInRegion(self, region: SwifterDate.defaultRegion).dateByAdding(count, component)
 	}
 
 	/// Return related date starting from the receiver attributes.
@@ -196,7 +196,7 @@ public extension Date {
 	///   - region: region target, omit to use `SwiftDate.defaultRegion`
 	/// - Returns: Ordered list of the dates for given weekday into given month.
 	static func datesForWeekday(_ weekday: WeekDay, inMonth month: Int, ofYear year: Int,
-									   region: Region = SwiftDate.defaultRegion) -> [Date] {
+									   region: Region = SwifterDate.defaultRegion) -> [Date] {
 		let fromDate = DateInRegion(Date(year: year, month: month, day: 1, hour: 0, minute: 0), region: region)
 		let toDate = fromDate.dateAt(.endOfMonth)
 		return DateInRegion.datesForWeekday(weekday, from: fromDate, to: toDate, region: region).map { $0.date }
@@ -212,7 +212,7 @@ public extension Date {
 	///   - region: region target, omit to use `SwiftDate.defaultRegion`
 	/// - Returns: Ordered list of the dates for given weekday in passed range.
 	static func datesForWeekday(_ weekday: WeekDay, from startDate: Date, to endDate: Date,
-									   region: Region = SwiftDate.defaultRegion) -> [Date] {
+									   region: Region = SwifterDate.defaultRegion) -> [Date] {
 		let fromDate = DateInRegion(startDate, region: region)
 		let toDate = DateInRegion(endDate, region: region)
 		return DateInRegion.datesForWeekday(weekday, from: fromDate, to: toDate, region: region).map { $0.date }
@@ -242,7 +242,7 @@ public extension Date {
     ///   - weekday: weekday to get.
     ///   - region: region target, omit to use `SwiftDate.defaultRegion`
     /// - Returns: `Date`
-    func nextWeekday(_ weekday: WeekDay, region: Region = SwiftDate.defaultRegion) -> Date {
+    func nextWeekday(_ weekday: WeekDay, region: Region = SwifterDate.defaultRegion) -> Date {
         let date = DateInRegion(self, region: region)
         return date.nextWeekday(weekday).date
     }

@@ -17,7 +17,7 @@ import Foundation
 ///     let difference = lhs - rhs
 ///     rhs + difference = lhs
 public func - (lhs: Date, rhs: Date) -> DateComponents {
-    SwiftDate.defaultRegion.calendar.dateComponents(DateComponents.allComponentsSet, from: rhs, to: lhs)
+    SwifterDate.defaultRegion.calendar.dateComponents(DateComponents.allComponentsSet, from: rhs, to: lhs)
 }
 
 /// Adds date components to a date and returns a new date.

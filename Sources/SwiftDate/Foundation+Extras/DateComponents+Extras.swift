@@ -124,13 +124,13 @@ public extension DateComponents {
 	/// Return the current date plus the receive's interval
 	/// The default calendar used is the `SwiftDate.defaultRegion`'s calendar.
 	var fromNow: Date {
-		return SwiftDate.defaultRegion.calendar.date(byAdding: (self as DateComponents) as DateComponents, to: Date() as Date)!
+		return SwifterDate.defaultRegion.calendar.date(byAdding: (self as DateComponents) as DateComponents, to: Date() as Date)!
 	}
 
 	/// Returns the current date minus the receiver's interval
 	/// The default calendar used is the `SwiftDate.defaultRegion`'s calendar.
 	var ago: Date {
-		return SwiftDate.defaultRegion.calendar.date(byAdding: -self as DateComponents, to: Date())!
+		return SwifterDate.defaultRegion.calendar.date(byAdding: -self as DateComponents, to: Date())!
 	}
 
 	/// - returns: the date that will occur once the receiver's components pass after the provide date.
@@ -266,7 +266,7 @@ public extension DateComponents {
 	///
 	/// - returns: the value of interval expressed in selected `Calendar.Component`
 	func `in`(_ component: Calendar.Component, of calendar: CalendarConvertible? = nil) -> Int? {
-		let cal = (calendar?.toCalendar() ?? SwiftDate.defaultRegion.calendar)
+		let cal = (calendar?.toCalendar() ?? SwifterDate.defaultRegion.calendar)
 		let dateFrom = Date()
 		let dateTo = (dateFrom + self)
 		let components: Set<Calendar.Component> = [component]
@@ -281,7 +281,7 @@ public extension DateComponents {
 	///   - calendar: context calendar to use
 	/// - Returns: a dictionary of extract values.
 	func `in`(_ components: Set<Calendar.Component>, of calendar: CalendarConvertible? = nil) -> [Calendar.Component: Int] {
-		let cal = (calendar?.toCalendar() ?? SwiftDate.defaultRegion.calendar)
+		let cal = (calendar?.toCalendar() ?? SwifterDate.defaultRegion.calendar)
 		let dateFrom = Date()
 		let dateTo = (dateFrom + self)
 		let extractedCmps = cal.dateComponents(components, from: dateFrom, to: dateTo)

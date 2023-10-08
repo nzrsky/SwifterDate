@@ -10,7 +10,7 @@
 //  Copyright © 2019 Daniele Margutti. Licensed under MIT License.
 //
 
-import SwiftDate
+import SwifterDate
 import XCTest
 
 class TestFormatters: XCTestCase {
@@ -359,42 +359,42 @@ class TestFormatters: XCTestCase {
 	}*/
 
 	public func testDotNETFormatter() {
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
 		datesList().forEach {
-			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["dotnet"]!, type: "dotnet", region: SwiftDate.defaultRegion)
+			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["dotnet"]!, type: "dotnet", region: SwifterDate.defaultRegion)
 		}
 	}
 
 	public func testRSSFormatter() {
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
 		datesList().forEach {
-			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["rss"]!, type: "rss", region: SwiftDate.defaultRegion)
+			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["rss"]!, type: "rss", region: SwifterDate.defaultRegion)
 		}
 	}
 
 	public func testRSSAltFormatter() {
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
 		datesList().forEach {
-			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["rss_alt"]!, type: "rss_alt", region: SwiftDate.defaultRegion)
+			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["rss_alt"]!, type: "rss_alt", region: SwifterDate.defaultRegion)
 		}
 	}
 
 	public func testSQLFormatter() {
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
 		datesList().forEach {
-			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["sql"]!, type: "sql", region: SwiftDate.defaultRegion)
+			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["sql"]!, type: "sql", region: SwifterDate.defaultRegion)
 		}
 	}
 
 	public func testISOFormatter() {
-		SwiftDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
+		SwifterDate.defaultRegion = Region(calendar: Calendars.gregorian, zone: Zones.europeRome, locale: Locales.english)
 		datesList().forEach {
-			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["iso"]!, type: "iso", region: SwiftDate.defaultRegion)
+			XCTTestFormatterParser(dateStr: $0.key, expected: $0.value["iso"]!, type: "iso", region: SwifterDate.defaultRegion)
 		}
 	}
 
-	func XCTTestFormatterParser(dateStr: String, expected: String, type: String, region: Region = SwiftDate.defaultRegion) {
-		guard let srcDate = dateStr.toDate("yyyy-MM-dd'T'HH:mm:ssZZZZZ", region: SwiftDate.defaultRegion) else {
+	func XCTTestFormatterParser(dateStr: String, expected: String, type: String, region: Region = SwifterDate.defaultRegion) {
+		guard let srcDate = dateStr.toDate("yyyy-MM-dd'T'HH:mm:ssZZZZZ", region: SwifterDate.defaultRegion) else {
 			XCTFail("Failed to correctly parse date: '\(dateStr)'")
 			return
 		}

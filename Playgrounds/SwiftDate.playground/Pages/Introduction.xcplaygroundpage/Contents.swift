@@ -1,5 +1,5 @@
 import Foundation
-import SwiftDate
+import SwifterDate
 /*:
 ## 1.0 - Dates & Cocoa
 
